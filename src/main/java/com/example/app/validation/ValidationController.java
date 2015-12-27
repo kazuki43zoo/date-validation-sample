@@ -36,6 +36,7 @@ public class ValidationController {
             return "validation/form";
         }
         model.addAttribute("dateOfBirth", form.getDateOfBirth().toLocalDate());
+        model.addAttribute("dateOfJoin", form.getDateOfJoin().toLocalDate());
         return "validation/form";
     }
 

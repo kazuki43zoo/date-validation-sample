@@ -23,12 +23,13 @@
 </head>
 <body>
 <form:form modelAttribute="sampleForm">
+    <div>
+        <form:input path="name" cssErrorClass="inputError" placeholder="Name"/><form:errors path="name"/>
+    </div>
     <spring:bind path="dateOfBirth">
         <div class="${status.error ? 'inputError' : ''}">
             <div>
                 Date Of Birth : ${dateOfBirth}
-            </div>
-            <div>
                 <form:errors path="dateOfBirth"/>
             </div>
             <div>
@@ -42,6 +43,26 @@
             <div>
                 <form:input path="dateOfBirth.day" cssErrorClass="inputError" placeholder="Day"/>
                 <form:errors path="dateOfBirth.day"/>
+            </div>
+        </div>
+    </spring:bind>
+    <spring:bind path="dateOfJoin">
+        <div class="${status.error ? 'inputError' : ''}">
+            <div>
+                Date Of Join : ${dateOfJoin}
+                <form:errors path="dateOfJoin"/>
+            </div>
+            <div>
+                <form:input path="dateOfJoin.year" cssErrorClass="inputError" placeholder="Year"/>
+                <form:errors path="dateOfJoin.year"/>
+            </div>
+            <div>
+                <form:input path="dateOfJoin.month" cssErrorClass="inputError" placeholder="Month"/>
+                <form:errors path="dateOfJoin.month"/>
+            </div>
+            <div>
+                <form:input path="dateOfJoin.day" cssErrorClass="inputError" placeholder="Day"/>
+                <form:errors path="dateOfJoin.day"/>
             </div>
         </div>
     </spring:bind>
