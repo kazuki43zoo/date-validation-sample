@@ -1,25 +1,14 @@
 package com.example.app.validation;
 
-import javax.validation.GroupSequence;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 
-@GroupSequence({DateItem.class, ValidationGroups.Correlation.class})
-@ValidDateItem(groups = ValidationGroups.Correlation.class)
 public class DateItem {
 
-    @Min(1900)
-    @Max(9999)
     private Integer year;
 
-    @Min(1)
-    @Max(12)
     private Integer month;
 
-    @Min(1)
-    @Max(31)
     private Integer day;
 
     public Integer getYear() {
@@ -46,7 +35,7 @@ public class DateItem {
         this.day = day;
     }
 
-    public boolean isValidDate() {
+    public boolean isValid() {
         if (year == null && month == null && day == null) {
             return true;
         }
@@ -61,7 +50,7 @@ public class DateItem {
         }
     }
 
-    public LocalDate toLocalDate() {
+    public LocalDate getValue() {
         if (year != null && month != null && day != null) {
             return LocalDate.of(year, month, day);
         } else {

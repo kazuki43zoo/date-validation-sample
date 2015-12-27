@@ -1,17 +1,19 @@
 package com.example.app.validation;
 
+import javax.validation.Constraint;
+import javax.validation.Payload;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
-import javax.validation.Constraint;
-import javax.validation.Payload;
 
 import static java.lang.annotation.ElementType.*;
+import static java.lang.annotation.ElementType.CONSTRUCTOR;
+import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Documented
-@Constraint(validatedBy = { ValidDateItemValidator.class })
-@Target({ TYPE, ANNOTATION_TYPE })
+@Constraint(validatedBy = {ValidDateItemValidator.class})
+@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 public @interface ValidDateItem {
 
@@ -21,7 +23,13 @@ public @interface ValidDateItem {
 
     Class<? extends Payload>[] payload() default {};
 
-    @Target({ TYPE, ANNOTATION_TYPE})
+    boolean required() default false;
+
+    int minYear() default 1900;
+
+    int maxYear() default 9999;
+
+    @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
     @Retention(RUNTIME)
     @Documented
     @interface List {

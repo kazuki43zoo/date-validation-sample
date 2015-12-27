@@ -1,6 +1,5 @@
 package com.example.app.validation;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -10,10 +9,10 @@ public class SampleForm {
     @Size(min = 1, max = 50)
     private String name;
 
-    @Valid
+    @ValidDateItem(required = true)
     private DateItem dateOfBirth;
 
-    @Valid
+    @ValidDateItem(minYear = 2000, maxYear = 2999)
     private DateItem dateOfJoin;
 
     public String getName() {
